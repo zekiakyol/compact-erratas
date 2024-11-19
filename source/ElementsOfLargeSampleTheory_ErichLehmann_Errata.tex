@@ -1,0 +1,288 @@
+\documentclass[10pt, a4paper]{article}
+% Page Layout
+\usepackage[top=2cm, bottom=2cm, left=1cm, right=1cm]{geometry}
+\usepackage{setspace} % Adjust line spacing with \onehalfspacing, \doublespacing, \setstretch{1.25}
+% Language and Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+% Fix for l3regex.syn error
+\usepackage{expl3}
+\expandafter\def\csname ver@l3regex.sty\endcsname{}
+% Hyperlinks and URLs
+\usepackage[hyphens]{url}
+\usepackage[colorlinks, breaklinks]{hyperref}
+\hypersetup{citecolor=blue, linkcolor=green, urlcolor=magenta, filecolor=cyan, pdfpagemode=UseNone} % Link colors and hide bookmarks
+% Citation Style
+\usepackage{apacite}
+% Math Packages
+\usepackage{amsmath, amssymb, amsfonts, amsthm, amsbsy, latexsym}
+\usepackage{mathtools} % $mathclap{}$
+\DeclareMathOperator*{\plim}{plim} % Custom operator
+% Graphics and Figures
+\usepackage{graphicx, caption, subcaption} % Include figures \includegraphics[scale=1]{figurename.png}
+\usepackage{stackengine, scalerel} % Alternative to \widehat: \stackon
+\usepackage{tikz, pgfplots} % TikZ and plotting
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes.misc, positioning, arrows.meta, fillbetween}
+% Tables
+\usepackage{booktabs, multirow, longtable, array, tabularx, ragged2e} % Enhanced tables
+\usepackage{diagbox, makecell} % Diagonal cells and customized table cells
+% Lists and Enumerations
+\usepackage{enumitem} % Customizable lists with labels: \begin{enumerate}[label=(\roman*)] \begin{enumerate}[label=\fbox{\Roman*}] \begin{enumerate}[label=(\alph*)]
+% Text Formatting
+\usepackage{xcolor, coloring} % Custom text colors \textcolor{red}{text} \definecolor{myblue}{RGB}{0, 0, 255}
+\usepackage{nicefrac} % Inline fractions: \nicefrac{1}{2}
+\usepackage{parskip} % Skip lines between paragraphs
+\usepackage{indentfirst} % Indent first paragraph after \section{}
+\usepackage{upref} % Non-italicized references
+\usepackage{cancel} % Strikeout in equations: \cancel{}
+% Miscellaneous
+\usepackage{verbatim} % Hide blocks: \begin{comment} ... \end{comment}
+\usepackage{lineno} % Number lines: \begin{linenumbers} ... \end{linenumbers}
+\usepackage[nodayofweek]{datetime} % Short date and time format: \today \currenttime
+\usepackage{listings} % Code listings
+\usepackage{float} % Control figure placement
+\pagenumbering{gobble} % No page numbers
+\usepackage[fixed]{fontawesome5}
+% I usually forget
+	% Write above or below in math mode: $\overset{\mathrm{def}}{=}$ $\underset{\mathrm{def}}{=}$
+	% Set column width in tables: \begin{tabular}{|c|p{3cm}|} ... \end{tabular}
+	% Scale tables: \scalebox{0.8}{}
+	% Multiline expression underneath: $\sum_{\mathclap{\substack{i=0 \\ i \neq 5}}}^{10} a_i$. Use $\displaystyle\sum$ if necessary
+	% Avoid all inline math mode: \everymath{\displaystyle}
+% Custom commands
+\newcolumntype{R}[1]{>{\RaggedRight}p{#1}}
+\newcommand{\innerproduct}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\normalized}[1]{#1_\circ}
+\newcommand{\dg}[1]{\mathrm{dg}\left(#1\right)}
+\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\dimension}[1]{\mathrm{dim}\left(#1\right)}
+\newcommand{\col}[1]{\mathrm{col}\left(#1\right)}
+\newcommand{\kernel}[1]{\mathrm{ker}\left(#1\right)}
+\newcommand{\rk}[1]{\mathrm{rk}\left(#1\right)}
+\newcommand{\swp}[1]{\mathrm{SWP}\left(#1\right)}
+\newcommand{\etr}[1]{\mathrm{exp}\left(\tr{#1}\right)}
+\newcommand{\vecv}[1]{\mathrm{vec}\left(#1\right)}
+\newcommand{\vech}[1]{\mathrm{vech}\left(#1\right)}
+
+\begin{document}
+
+\section*{\faScroll Errata: Elements of Large-Sample Theory - Erich L. Lehmann (1999) \\ \faCalendar*Errata Update: 20 July, 2021}
+
+\begin{longtable}{|R{.40\textwidth}|R{.55\textwidth}|} \hline
+\multicolumn{2}{|l|}{Original document: \href{https://sites.psu.edu/drh20/david-hunters-home-page/asymptotics-notes/errata/}{sites.psu.edu/drh20/david-hunters-home-page/asymptotics-notes/errata/}} \\
+\multicolumn{2}{|l|}{This document (\today): \href{https://github.com/zekiakyol/compact-erratas}{github.com/zekiakyol/compact-erratas}} \\ \hline \hline
+\textbf{\faMapMarker* Location} & \textbf{\faMarker Correction} \\ \hline
+\textbf{Page 2}, footnote at bottom of page & ``connction'' should be ``connection'' \\ \hline
+\textbf{Page 7}, Lemma 1.1.1 & ``symptotically'' should be ``asymptotically''\\ \hline
+\textbf{Page 8}, line above (1.1.28) & ``formula'' should be plural \\ \hline
+\textbf{Page 11}, Tables 1.2.3 and 1.2.4 & The bottom row in each table should be labeled with the Poisson parameter $\lambda$, not $\gamma$. \\ \hline
+\textbf{Page 11}, the three lines above Table 1.2.4 & $\gamma=\alpha$ should be $p=\alpha$ and $\gamma=.02$ should be $p=.02$. \\ \hline
+\textbf{Page 12}, second paragraph, sentence beginning with ``The third row ...'' & Since $\gamma$ should not be in Table 1.2.4, the parenthetical expression ``(with $\lambda$ in place of $\gamma$)'' seems unnecessary. \\ \hline
+\textbf{Page 15}, Expression (1.3.3) & denominator should be $i^\alpha$, not $i^a$ \\ \hline
+\textbf{Page 16}, Equation (1.3.9) & $\mathbf{1}$ should not be bold \\ \hline
+\textbf{Page 17}, Example 1.3.5 & If $\alpha$ is a non-negative integer, the series has infinite radius of convergence. \\ \hline
+\textbf{Page 21}, bottom right entry of Table 1.4.3 & $.0197$ should be $.0192$ \\ \hline
+\textbf{Page 22}, top line & ``number'' should be plural \\ \hline
+\textbf{Page 27}, Inequality (1.5.3) & Missing ``$< \epsilon$''. Should be $|f(x)-a| < \epsilon$. \\ \hline
+\textbf{Page 29}, second paragraph & Should read ``at $x_0$ is continuous at $x_0$.'' \\ \hline
+\textbf{Page 36}, Problem 1.17 & Should be $\gamma^n\to 0$ \\ \hline
+\textbf{Page 37}, Problem 1.18 in the hint & Should say ``Suppose $\gamma > 1$.'' \\ \hline
+\textbf{Page 37}, Problem 2.5 & Both terms asymptotically equivalent to $P_n(x)$ should be divided by $x!$. \\ \hline
+\textbf{Page 42}, Problem 5.1 & Definition 1.5.1 does not apply to this situation. The problem might be rephrased ``Extend Definition 1.5.1 and use it to show that...'' \\ \hline
+\textbf{Page 43}, Problem 5.10, second line & lowercase $f$ should be capital \\ \hline
+\textbf{Page 43}, Problem 5.11, Hint for (i) & The first sentence of the hint is false. Nothing is harmed by deleting it. \\ \hline
+\textbf{Page 44}, Problem 5.14 & The statement is not true. It could be made true by (for example) specifying that the ${b_n}$ are non-decreasing. \\ \hline
+\textbf{Page 45}, Problem 6.9 & ``id'' should be ``is'' \\ \hline
+\textbf{Page 47}, line 6 & ``give'' should be ``gives'' \\ \hline
+\textbf{Page 52}, 5 lines from bottom & should read, ``which tends to $a+1$ if ...'' \\ \hline
+\textbf{Page 54}, Equations (2.1.19) & These results are identical to (2.1.18) and are therefore redundant. \\ \hline
+\textbf{Page 57}, sentence beginning `By Theorem 2.1.1, a sufficient...'' & $Y_n$ should be $\delta_n$. \\ \hline
+\textbf{Page 58}, line above (2.2.11) & relative efficiency is defined in Section 4.3, not 4.2 \\ \hline
+\textbf{Page 58}, Caption of Table 2.2.1 & word ``of'' should be omitted \\ \hline
+\textbf{Page 59}, expression for variance of $\widehat{\beta}$ & numerator of rightmost fraction should be $\sigma^2$, not $1$ \\ \hline
+\textbf{Page 59}, Equation (2.2.19) & numerator of second fraction should be $\overline{v}^2$, not $1$ \\ \hline
+\makecell[l]{\textbf{Page 62}, limits of summation in (2.2.31); \\ \hspace*{0.1cm} \textbf{Page 63} limits of summation below (2.2.34)} & Should start with $k=0$, not $k=1$ (this is irrelevant unless $\sigma^2$ is infinite) \\ \hline
+\textbf{Page 62}, Example 2.2.7 & While there is nothing technically wrong here, the sequences defined are actually $(m-1)$-dependent in addition to being $m$-dependent. \\ \hline
+\textbf{Page 63}, bottom of page in (2.3.1) & Limit is as $n\to\infty$, not $x\to\infty$ \\ \hline
+\textbf{Page 65}, Example 2.3.3, equation underneath ``have cdf $H_n^\prime$ ...'' & $F\left(x -\dfrac{1}{n}\right)$ should be $P\left(x -\dfrac{1}{n}\right)$ \\ \hline
+\textbf{Page 69}, line above Equation (2.3.11) & Problem 1.17 should be Problem 1.1.17 \\ \hline
+\textbf{Page 72}, Example 2.3.9, equations underneath ``then'' & First $F$ should be $f$ \\ \hline
+\textbf{Page 78}, second line from bottom & pronoun ``it'' has wrong antecedent \\ \hline
+\textbf{Page 79}, Limit (2.4.13) & In the denominator, the $p$ and $q$ could have subscripted $n$ (this one is a bit questionable, but would probably improve readability) \\ \hline
+\textbf{Page 81}, Limit (2.4.19) & Convergence in distribution symbol is missing the $L$ \\ \hline
+\textbf{Page 81}, second to last line & word ``the'' is repeated \\ \hline
+\textbf{Page 82}, Table 2.4.2, first column, rows 5, 8, 11, 14, and 17 & $1-G_n(X)$ should be $1-\Phi(X)$ \\ \hline
+\textbf{Page 82}, equation in middle of page & Numerator of fraction should be $\chi^2_n n$, not $\chi^2_n$ \\ \hline
+\textbf{Page 82}, 9 lines from bottom & $\chi^2_{2k}$ should be $\chi^2_k$ \\ \hline
+\textbf{Page 83}, line above Equation (2.4.21) & $\sigma^2$ should be $\sigma^3$ \\ \hline
+\textbf{Page 83}, Equation (2.4.21) & $[1-x^2\phi(x)]$ should be $[1-x^2]\phi(x)$ \\ \hline
+\textbf{Page 83}, 9 lines from bottom & ``Balakrishman'' should be ``Balakrishnan'' \\ \hline
+\makecell[l]{\textbf{Page 86}, limit at bottom of page; \\ \hspace*{0.1cm} \textbf{Page 87}, limit at top of page} & convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 88}, limit (2.5.9) & convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 89}, Equation (2.5.11) & $\overline{X}$ should be under a radical everywhere it appears \\ \hline
+\textbf{Page 90}, limit at top of page & One of the convergence in distribution symbols is missing $L$ \\ \hline
+\makecell[l]{\textbf{Page 90}, both limits in Example 2.5.5; \\ \hspace*{0.1cm} \textbf{Page 91}, first limit in Example 2.5.6} & convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 93}, Equation (2.6.1) & $P$ should be $P_\theta$ (questionable) \\ \hline
+\textbf{Page 94}, line beginning ``For any fixed $n$, ...'' & ``tends to $0$'' should be ``tends to $1$'' \\ \hline
+\makecell[l]{\textbf{Page 99}, bottom of page; \\ \hspace*{0.1cm} \textbf{Page 101}, equation (2.7.14); \\ \hspace*{0.1cm} \textbf{Page 102}, equation (2.7.16); \\ \hspace*{0.2cm}\textbf{Page 102}, equations in proof of Theorem 2.7.4} & expressions such as $o(x)^3$ are not actually defined and should be $o[(x)^3]$ \\ \hline
+\textbf{Page 101}, sentence above Theorem 2.7.2 & ``(A')'' should be ``(B)'' \\ \hline
+\textbf{Page 101}, Equation (2.7.13) & Var $X_n$ should be Var $\overline{X}_n$ \\ \hline
+\textbf{Page 103}, Example 2.7.5 & The assumptions given do not imply asymptotic normality as claimed. Sufficient conditions that do work are as follows: Suppose that $Y_i$ is defined as given, and suppose that $E|Y_i|^3 < M$ for all $i$ for some finite $M$. Then the assumptions of Theorem 2.7.3 are NOT satisfied; instead, though, we can use Theorem 2.7.2 directly to obtain the desired asymptotic normality. \\ \hline
+\textbf{Page 103}, Equation (2.7.21) and the equation just above it & The square root of the sum of $1/\sigma_j^2$ should be in the numerator of each fraction, not the denominator \\ \hline
+\textbf{Page 105}, line above Theorem 2.7.5 & (7.27) should be (2.7.27) \\ \hline
+\textbf{Page 105}, three lines above (2.7.29) & ``hence by (7.25)'' should be ``hence by (2.7.25)'' \\ \hline
+\textbf{Page 105}, equation on last line & missing factor of $(1-p_i)$ just to the left of the last equals sign \\ \hline
+\textbf{Page 106}, summary items 1 and 2 & The roles of (A') and (B) are switched. This happens 3 times. \\ \hline
+\textbf{Page 110}, lines 6-7 & The fact that the $X_i$ are identically distributed is necessary but not sufficient for stationarity \\ \hline
+\textbf{Page 111}, line above equation (2.8.22) & ``(8.20)'' should be ``(2.8.21)'' \\ \hline
+\textbf{Page 111}, 4 lines below Equation (2.8.24) & ``(2.8.20)'' should be ``(2.8.21)'' \\ \hline
+\textbf{Page 111}, equation following ``Using the fact that'' & $\gamma_{k-1}$ should be $\gamma_k$ \\ \hline
+\textbf{Page 117}, sentence before equation (2.8.48) & “(2.8.45)” should be “(2.8.46)” \\ \hline
+\textbf{Page 119}, Problem 1.3 at the end of the hint & First, there's a missing ``$]$'' to match the one before Hint. Second, $|Y_n-c| > b$ should be $|Y_n-c| < b$. \\ \hline
+\textbf{Page 120}, Problem 2.1 & The statement is false. The absolute value of the sample mean tends to infinity in this case, but with probability $1$, the sample mean itself does not converge to any value, finite or infinite. \\ \hline
+\textbf{Page 122}, Problem 3.5 & ``arbitrary'' should be ``arbitrarily''. Also, a right bracket is missing after the hint. \\ \hline
+\textbf{Page 124}, Problem 3.17 & This is exactly the same as Problem 3.6 on p. 122. \\ \hline
+\textbf{Page 125}, Problem 4.5, second line of hint & $X_{m-1}$ should be $X_{(m+1)}$ \\ \hline
+\textbf{Page 132}, Problem 8.16(i) & The equality is not true (however, it is true as an asymptotic equivalence). \\ \hline
+\textbf{Page 136}, Equation (3.1.19) & $\theta_n$ should be $\theta_0$ \\ \hline
+\textbf{Page 138}, Lemma 3.1.1 & It must be stated that $U$ and $V$ are independent, or the lemma can fail. \\ \hline
+\textbf{Page 140}, big fraction on left above ``and hence by Slutsky's theorem'' & In the denominator, $\sigma$ and $\tau$ should not have hats. \\ \hline
+\textbf{Page 142}, Expression (3.1.39) & ``for all $n > n_0(\vartheta)$'' should be deleted. \\ \hline
+\textbf{Page 144}, Equation (3.1.48) & $X$ and $Y$ are missing bars in denominator. \\ \hline
+\textbf{Page 145}, Expression (3.1.54) & The $\widehat{\tau}_n^\prime$ on the left hand side should not be primed. \\ \hline
+\textbf{Page 149}, Equation (3.2.12) & Denominator is missing a factor of $\sqrt{1/m+1/n}$. \\ \hline
+\textbf{Page 150}, just above (3.2.15) & ``such as sequence'' should be ``such a sequence''. \\ \hline
+\textbf{Page 150}, statement (3.2.16) & $\infty$ should be $1$. \\ \hline
+\textbf{Page 151}, second to last line & (3.2.31) should be (3.2.13). \\ \hline
+\textbf{Page 154}, statement (3.2.26) & ``assignment'' is misspelled. \\ \hline
+\textbf{Page 159}, line immediately following proof of Theorem 3.3.2 & 3.2.2 should be 3.3.2. \\ \hline
+\textbf{Page 162}, Table 3.3.1 & ``Level'' should appear above ``Exact'' and ``Approx.'' instead of above the column of $p_0$ values. \\ \hline
+\textbf{Page 162}, Table 3.3.1 & ``Power at $\Delta=.1$'' should be ``Power at $\Delta=1$'' or ``Power at $p-p_0=.1$''. \\ \hline
+\textbf{Page 162}, 4th line below table & ``tables'' should be ``table''. \\ \hline
+\textbf{Page 162}, 7th line below table & ``as $p_0$ moves away from $1/2$'' should be ``as $p_0$ moves toward $1/2$''. \\ \hline
+\textbf{Page 163}, last line of Theorem 3.3.4 & $\tau^2(\theta_0, \vartheta)$ should be $\widehat{\tau}_n^2$. \\ \hline
+\textbf{Page 164}, Expressions (3.3.23) & convergence in distribution symbols are missing $L$. \\ \hline
+\textbf{Page 165}, Equation (3.3.27) & Denominator should have $\sqrt{\lambda}$ instead of $\lambda$. \\ \hline
+\textbf{Page 170}, first line of text & 3.2.2 should be 3.3.2. \\ \hline
+\textbf{Page 175}, 3 lines from bottom & ``assumptions'' is misspelled. \\ \hline
+\textbf{Page 181}, 2nd line of Example 3.4.6 & 3.4.3 should be 3.4.4. \\ \hline
+\textbf{Page 206}, first identity in Hint for Problem 2.4 & $\dfrac{m}{n}$ should be $\dfrac{m}{N}$. \\ \hline
+\textbf{Page 207}, Problem 2.10(i) & Should say $E(Z_i^2)=\sigma^2$, not $E(Z_i)=\sigma^2$. \\ \hline
+\textbf{Page 247}, Equation (4.3.37) & Denominator is missing a factor of $12$. \\ \hline
+\textbf{Page 278}, first line and equation (5.1.1) & $\|\underline x, \underline y\|$ should be replaced by $\|\underline x-\underline y\|$ or $d(\underline x,\underline y)$. \\ \hline
+\textbf{Page 280}, Figure 5.1.1 & Figure (b) has an extra space and $S$ is not defined for either figure. \\ \hline
+\textbf{Page 281}, 2nd equation from bottom & missing comma in $N\left(0,\dfrac{\sigma^2}{\lambda}\right)$ \\ \hline
+\textbf{Page 282}, first equation & Convergence in distribution symbol missing $L$ \\ \hline
+\textbf{Page 282}, last equation before Example 5.1.2 & misplaced parentheses on the left hand side \\ \hline
+\textbf{Page 282}, 3rd line of Example 5.1.2 & ``marginal'' is misspelled \\ \hline
+\textbf{Page 282}, last equation before bottom & missing minus signs in exponents of $e$ \\ \hline
+\textbf{Page 284}, line above (5.1.24) & Theorem 5.1.7 should be Theorem 5.1.8 \\ \hline
+\textbf{Page 290}, (5.2.10) and (5.2.11) & variances missing factor of $n$; correlation missing root-$n$ \\ \hline
+\textbf{Page 294}, 4th line below (5.2.24) & ``tha'' should be ``the'' and ``continue'' should be ``continues'' \\ \hline
+\textbf{Page 299}, Equation (5.2.50) & term involving $\mu_3$ should be subtracted, not added (occurs twice) \\ \hline
+\textbf{Page 300}, matrix in (5.3.2) & The columns are too close together \\ \hline
+\textbf{Page 303}, Equation (5.3.16) & lowercase ``$a$'' on left hand side should be ``$A$'' \\ \hline
+\textbf{Page 305}, last line of Theorem 5.3.3 & the word ``its'' is missing between ``of'' and ``off-diagonal'' \\ \hline
+\textbf{Page 305}, line after (5.3.29) & (5.3.27) should be (5.3.28) \\ \hline
+\textbf{Page 306}, last displayed equation on page & $C^\prime_1$ should be inverted \\ \hline
+\textbf{Page 307}, Equation (5.3.37) & $|J|$ should be replaced by $|J|^{-1}$ in two places \\ \hline
+\textbf{Page 309}, first line of item 5 in summary & ``transformation'' is misspelled \\ \hline
+\textbf{Page 309}, summary item 6 & ``the Jacobian'' should be ``the reciprocal of the Jacobian'' \\ \hline
+\textbf{Page 312}, second equation from bottom & large summation symbol should be replaced by normal-sized capital $\Sigma$ \\ \hline
+\textbf{Page 313}, Theorem 5.4.3 & All the means in part (i) are incorrect due to left-multiplication by $A^{1/2}$ \\ \hline
+\textbf{Page 313}, 2nd line from bottom & sum with $j$ running from $1$ to $k$ should be a double sum, with $j$ from $1$ to $n$ and $i$ from $1$ to $k$ \\ \hline
+\textbf{Page 314}, Equation (5.4.14) & $j \neq 1$ should be $j \neq i$ \\ \hline
+\textbf{Page 317}, Expression (5.4.34) & $X_i Y_i$ should be $(X_i - \xi)(Y_i - \eta)$. Also, convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 318}, Expression (5.4.42) & Convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 319}, 4th line of item 4 in summary & Convergence in distribution symbol is missing $L$ and capital $N$ (for normal) is missing \\ \hline
+\textbf{Page 322}, (5.5.14) and the two preceding expressions & Convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 328}, last equation & Convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 329}, third line after (5.5.49) & $(0<\rho<1)$ should be $(0<\rho<\infty)$ \\ \hline
+\textbf{Page 333}, Expression (5.6.23) & Convergence in distribution symbol is missing $L$ \\ \hline
+\textbf{Page 339}, top line & ``following'' should be ``falling'' \\ \hline
+\textbf{Page 350}, Problem 1.2 (ii) & The function given doesn't work; try something like $f(x_1,x_2)=I(x_1x_2=0)$ \\ \hline
+\textbf{Page 351}, last line & missing ) in $X_{(n-1)}$ \\ \hline
+\textbf{Page 365}, equation preceding (6.1.2) & last argument should be $X_{i_a}$, not $X_{i_1}$ \\ \hline
+\textbf{Page 366}, third line & should begin with $0< {\rm Var}(\phi(X_1))<\infty$ \\ \hline
+\textbf{Page 366}, line beginning with (a) & ``statistics'' should be ``statistic'' \\ \hline
+\textbf{Page 369}, Theorems 6.1.2, 6.1.4, 6.2.1 & Cannot verify these theorems without assuming that all the $\sigma^2_i$ are finite. If it’s truly possible that $\sigma_1^2<\infty$ and $\sigma_2^2=\infty$ and (6.1.20) still holds, then an example of such behavior would be helpful. \\ \hline
+\textbf{Page 371}, last line of text & (1.6.30) should be (6.1.30) \\ \hline
+\textbf{Page 373}, Equation (6.1.40) & both summation indices should start with $0$, not $1$ \\ \hline
+\textbf{Page 382}, 6th line after (6.2.3) & $\widehat{F}_n^{-1}$ should be $\widehat{F}_n^{-1}(p)$ \\ \hline
+\textbf{Page 389}, line after (6.2.41) & ``order statistics'' should be ``order statistic'' \\ \hline
+\textbf{Page 398}, Expression (6.2.42) & convergence in distribution symbol is missing $L$ and final ) is missing \\ \hline
+\textbf{Page 409}, 2nd line & ``natural'' is misspelled \\ \hline
+\textbf{Page 415}, Equation (6.4.44) & no space between $3/4$ and $(1 - z^2)$ \\ \hline
+\textbf{Page 420}, Caption for Table 6.4.1 & (6.4.67) should be (6.4.66) \\ \hline
+\textbf{Page 422}, Equation (6.5.5) & misplaced right bracket should be before $\leq$ instead of after $a$ \\ \hline
+\textbf{Page 425}, Expression (6.5.14) & missing limit $p$ \\ \hline
+\textbf{Page 425}, two lines down from (6.5.15) & period missing at end of sentence \\ \hline
+\textbf{Page 428}, 2nd line & ``estimator'' is misspelled \\ \hline
+\textbf{Page 432-433}, Equations (6.5.44), (6.5.45), (6.5.47), (6.5.48), and the equation after (6.5.48) & all $\sqrt{n}$ should be $n$ \\ \hline
+\textbf{Page 438}, Problem 1.17 & Issue with assumptions; $E(T_n^*-T_n)^2=Var(T_n)-4\sigma_1^2$, which only goes to zero if $\sigma_2^2$ is finite \\ \hline
+\textbf{Page 438}, Problem 1.18 & Several corrections: $\lambda$ should satisfy $\dfrac{1}{2} \leq \lambda < \dfrac{1}{\sqrt{2}}$; $-\dfrac{1}{2}y^2$ should be in exponent of $e$; in second equation in hint, $X_e$ should be $X_3$ \\ \hline
+\textbf{Page 439}, Problem 2.2 & Right-hand side of the equation should be divided by $n$ \\ \hline
+\textbf{Page 453}, Equation (7.1.5) & last exponent contains unnecessary $e$ \\ \hline
+\textbf{Page 454}, 3rd line after (7.1.9) & ``density'' is misspelled \\ \hline
+\textbf{Page 454}, Figure 7.1.1 & on $x$-axis, $0$ could be $-1$ and $\theta-c(\theta)$ and $\theta+c(\theta)$ should be on one line \\ \hline
+\textbf{Page 455}, 14th line from bottom & ``densities'' is misspelled \\ \hline
+\textbf{Page 455}, 9th line from bottom & ``Examples 7.1.1 and 7.1.2'' should be ``Examples 7.1.2 and 7.1.3'' \\ \hline
+\textbf{Page 456}, 13th line & ``Section 7.5'' should be ``Section 7.4'' \\ \hline
+\textbf{Page 457}, 5th line & 7.1.2 should be 7.1.3 \\ \hline
+\textbf{Page 457}, line after (7.1.17) & ``likelihood'' is misspelled \\ \hline
+\textbf{Page 457}, 3rd line from bottom & ``Section 6.3'' should be ``Section 7.3'' \\ \hline
+\textbf{Page 461}, first line & ``Section 1.3'' should be ``Section 7.3'' \\ \hline
+\textbf{Page 463}, first equation & Equation is incorrect; should be $\frac{\partial}{\partial\theta}\log f_\theta(x) = \frac{3\theta^2(x-\theta^3)}{\sigma_0^2}$ \\ \hline
+\textbf{Page 463}, second equation & $9\theta^4\sigma_0^2$ should be $9\theta^4/\sigma_0^2$ \\ \hline
+\textbf{Page 463}, line after (7.2.4) & `As was seen in (2.2.17)'' should be ``As was seen in Example 2.3.7''; ``tends'' is misspelled \\ \hline
+\textbf{Page 463}, 4 lines above (7.2.5) & ``According to (7.2.7)'' should be ``According to (7.1.27)'' \\ \hline
+\textbf{Page 463}, last equation & Missing factor of $\theta$ in both denominators; first should be $\theta^3$, second should be $\theta^2$ \\ \hline
+\textbf{Page 472}, 3rd line from bottom & 7.2.1 should be 7.3.1 \\ \hline
+\textbf{Page 473}, two lines above (7.3.17) & ``of degree $k$'' should be ``of degree $2k$'' \\ \hline
+\textbf{Page 476}, Equation (7.3.26) & One of the $\theta_n$ is missing a tilde \\ \hline
+\textbf{Page 476}, equation above (7.3.29) & Denominator of first fraction should be $l^{\prime \prime}_n(\theta_0)/n$ instead of $l^{\prime \prime}_n(\theta_0)/\sqrt{n}$ \\ \hline
+\textbf{Page 483}, header & Header has wrong section number and title (should be 7.3) \\ \hline
+\textbf{Page 483}, line after (7.3.56) & ``variables'' should be ``variable'' \\ \hline
+\textbf{Page 485}, 3 lines before Example 7.4.1 & ``uniformly'' is misspelled \\ \hline
+\textbf{Page 486}, line 14 & ``uniformly'' is misspelled \\ \hline
+\textbf{Page 486-487}, Expressions (7.4.6) and (7.4.7) & Convergence in distribution symbols are missing $L$ \\ \hline
+\textbf{Page 487}, Expression (7.4.9) & The $2$ and the $a^2$ are switched \\ \hline
+\makecell[l]{\textbf{Page 492}, 4th line; \\ \hspace*{1cm} \textbf{Page 495}, line below (7.4.33)} & ``Jeffreys'' should have no apostrophe \\ \hline
+\textbf{Page 495}, Equation (7.4.33) & $\lambda^2$ should be $1/\lambda^2$ \\ \hline
+\textbf{Page 497}, general comment on section 7.5 & Why have underlines for vectors been abandoned? \\ \hline
+\textbf{Page 497}, equations above (7.5.2) & Should be taking the derivatives of the log-likelihood, not the likelihood \\ \hline
+\textbf{Page 500}, Corollary 7.5.1 & 7.5.1(ii) should be 7.5.1(i) \\ \hline
+\textbf{Page 500}, equation (7.5.13) & right-hand side should be $(J^\prime)^{-1}I(\theta)J^{-1}$ \\ \hline
+\textbf{Page 501}, 5 different places in (M6) and (M7) & $k$ is already the size of the parameter vector, so it should not be used as a dummy \\ \hline
+\textbf{Page 502}, Expression (7.5.19) and last expression on page & convergence in distribution symbols are missing $L$ \\ \hline
+\textbf{Page 508}, line below (7.5.51) & ``consistent'' is misspelled \\ \hline
+\textbf{Page 512}, line below (7.6.10) & ``Dirichlet'' is misspelled \\ \hline
+\textbf{Page 513}, line above (7.6.16) & 5.4.3 should be 7.5.4 \\ \hline
+\textbf{Page 526}, line below (7.7.7) & ``solely'' is misspelled \\ \hline
+\textbf{Page 527}, Expression (7.7.15) and Expression (7.7.16) & $\widehat{\theta}$ is missing a subscript $n$ \\ \hline
+\textbf{Page 528}, Example 7.7.1, first two lines & $N(0,1)$ should be $N(\theta,1)$ and ``Example 7.1.3'' should be ``Example 7.1.4'' \\ \hline
+\textbf{Page 528}, second equation in Example 7.7.1 & right-hand side should be $n\overline{x}^2$ \\ \hline
+\textbf{Page 530}, sentence in Example 7.2.2 beginning ``The Rao scores test...'' & Should read ``The Rao scores test of $H:\theta=\theta_0$ against $\theta>\theta_0$...''; also, two instances of $\theta$ should be replaced by $\theta_0$ and $\geq u_\alpha$ should be inserted before the period. \\ \hline
+\textbf{Page 531}, 11 lines from bottom & ``second and third factors'' should be ``third and fourth factors'' \\ \hline
+\textbf{Page 551}, Problem 1.7 & 7.1.2 should be 7.1.3 \\ \hline
+\textbf{Page 552}, Problem 1.10(ii) & ``binomial'' should be ``Bernoulli'' \\ \hline
+\textbf{Page 561}, inequality at top of page & set inclusion symbol mistakenly written as $\epsilon$ \\ \hline
+\textbf{Page 562}, Problem 6.8 & ``proved'' should be ``prove'' \\ \hline
+\textbf{Page 563}, Problem 6.12 & Problem is incorrect. It should likely read that $A-B$ is also positive semi-definite \\ \hline
+\textbf{Page 563}, Problem 6.12 & ``Theorem 6.4.7'' should be ``Theorem 7.6.4'' \\ \hline
+\textbf{Page 563}, equation in Problem 6.15 & mismatched left bracket with right parenthesis \\ \hline
+\textbf{Page 565}, Problem 7.9 & ``interval'' is misspelled \\ \hline
+\textbf{Page 576}, Expression (A.3.1) & $x_n$ should be $X_n$ \\ \hline
+\textbf{Page 577}, top line & $P(X_N = 0)$ should be $P(X_n = 0)$ \\ \hline
+\textbf{Page 577}, Expression (A.3.4) and the next 5 lines & All instances of $x$ should be $X$ \\ \hline
+\textbf{Page 577}, line below (A.3.8) & ``by (A.3.6), the probability of the event (A.3.5)'' should be ``by (A.3.5), the probability of the event (A.3.4)'' \\ \hline
+\textbf{Page 577}, last full paragraph & $x_1$, $x_2$ should be $X_1$, $X_2$ \\ \hline
+\textbf{Page 578}, first centered formula & $P(T_n - \theta| < c)$ is missing the left absolute value sign \\ \hline
+\textbf{Page 609}, entry for Bahadur & ``411'' should be ``511'' \\ \hline
+\textbf{Page 616}, entry for ``Bandwidth'' & should be included with the B's, not the A's \\ \hline
+\end{longtable}
+
+\end{document}

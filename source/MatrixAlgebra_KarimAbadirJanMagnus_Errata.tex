@@ -1,0 +1,112 @@
+\documentclass[11pt, a4paper, landscape]{article}
+% Page Layout
+\usepackage[top=1cm, bottom=1cm, left=2cm, right=2cm]{geometry}
+\usepackage{setspace} % Adjust line spacing with \onehalfspacing, \doublespacing, \setstretch{1.25}
+% Language and Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+% Fix for l3regex.syn error
+\usepackage{expl3}
+\expandafter\def\csname ver@l3regex.sty\endcsname{}
+% Hyperlinks and URLs
+\usepackage[hyphens]{url}
+\usepackage[colorlinks, breaklinks]{hyperref}
+\hypersetup{citecolor=blue, linkcolor=green, urlcolor=magenta, filecolor=cyan, pdfpagemode=UseNone} % Link colors and hide bookmarks
+% Citation Style
+\usepackage{apacite}
+% Math Packages
+\usepackage{amsmath, amssymb, amsfonts, amsthm, amsbsy, latexsym}
+\usepackage{mathtools} % $mathclap{}$
+\DeclareMathOperator*{\plim}{plim} % Custom operator
+% Graphics and Figures
+\usepackage{graphicx, caption, subcaption} % Include figures \includegraphics[scale=1]{figurename.png}
+\usepackage{stackengine, scalerel} % Alternative to \widehat: \stackon
+\usepackage{tikz, pgfplots} % TikZ and plotting
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes.misc, positioning, arrows.meta, fillbetween}
+% Tables
+\usepackage{booktabs, multirow, longtable, array, tabularx, ragged2e} % Enhanced tables
+\usepackage{diagbox, makecell} % Diagonal cells and customized table cells
+% Lists and Enumerations
+\usepackage{enumitem} % Customizable lists with labels: \begin{enumerate}[label=(\roman*)] \begin{enumerate}[label=\fbox{\Roman*}] \begin{enumerate}[label=(\alph*)]
+% Text Formatting
+\usepackage{xcolor, coloring} % Custom text colors \textcolor{red}{text} \definecolor{myblue}{RGB}{0, 0, 255}
+\usepackage{nicefrac} % Inline fractions: \nicefrac{1}{2}
+\usepackage{parskip} % Skip lines between paragraphs
+\usepackage{indentfirst} % Indent first paragraph after \section{}
+\usepackage{upref} % Non-italicized references
+\usepackage{cancel} % Strikeout in equations: \cancel{}
+% Miscellaneous
+\usepackage{verbatim} % Hide blocks: \begin{comment} ... \end{comment}
+\usepackage{lineno} % Number lines: \begin{linenumbers} ... \end{linenumbers}
+\usepackage[nodayofweek]{datetime} % Short date and time format: \today \currenttime
+\usepackage{listings} % Code listings
+\usepackage{float} % Control figure placement
+\pagenumbering{gobble} % No page numbers
+\usepackage[fixed]{fontawesome5}
+% I usually forget
+	% Write above or below in math mode: $\overset{\mathrm{def}}{=}$ $\underset{\mathrm{def}}{=}$
+	% Set column width in tables: \begin{tabular}{|c|p{3cm}|} ... \end{tabular}
+	% Scale tables: \scalebox{0.8}{}
+	% Multiline expression underneath: $\sum_{\mathclap{\substack{i=0 \\ i \neq 5}}}^{10} a_i$. Use $\displaystyle\sum$ if necessary
+	% Avoid all inline math mode: \everymath{\displaystyle}
+% Custom commands
+\newcolumntype{R}[1]{>{\RaggedRight}p{#1}}
+\newcommand{\innerproduct}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\normalized}[1]{#1_\circ}
+\newcommand{\dg}[1]{\mathrm{dg}\left(#1\right)}
+\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\dimension}[1]{\mathrm{dim}\left(#1\right)}
+\newcommand{\col}[1]{\mathrm{col}\left(#1\right)}
+\newcommand{\kernel}[1]{\mathrm{ker}\left(#1\right)}
+\newcommand{\rk}[1]{\mathrm{rk}\left(#1\right)}
+\newcommand{\swp}[1]{\mathrm{SWP}\left(#1\right)}
+\newcommand{\etr}[1]{\mathrm{exp}\left(\tr{#1}\right)}
+\newcommand{\vecv}[1]{\mathrm{vec}\left(#1\right)}
+\newcommand{\vech}[1]{\mathrm{vech}\left(#1\right)}
+
+\begin{document}
+
+\section*{\faScroll Errata: Matrix Algebra - Karim M. Abadir, Jan R. Magnus (2005) \\ \faCalendar*Errata Update: October 7, 2014}
+
+\begin{longtable}{|R{.20\textwidth}|R{.75\textwidth}|} \hline
+\multicolumn{2}{|l|}{Original document: \href{https://www.janmagnus.nl/misc/corrections03.pdf}{janmagnus.nl/misc/corrections03.pdf}} \\
+\multicolumn{2}{|l|}{This document (\today): \href{https://github.com/zekiakyol/compact-erratas}{github.com/zekiakyol/compact-erratas}} \\ \hline \hline
+\textbf{\faMapMarker* Location} & \textbf{\faMarker Correction} \\ \hline
+\textbf{Page 69}, Exercise 5.53 & From line 4 to line 12, each occurrence of $\boldsymbol{x}$ (but not of $\boldsymbol{x}_n$ and $\boldsymbol{x}_m$) should be replaced by $\boldsymbol{y}$. \\ \hline
+\textbf{Page 86}, Exercise 4.27 & \makecell[l]{The solution to (a) should read:  
+								  			   (a) The matrix $|\boldsymbol{A}|$ is nonsingular because $\rk{\boldsymbol{A}} = \rk{\boldsymbol{A}^\prime \boldsymbol{A}} = \rk{\boldsymbol{I}_n} = n$.} \\ \hline
+\textbf{Page 118}, Exercise 5.40 & In the displayed formula in the exercise, $|A|$ should be boldface: $|\boldsymbol{A}|$. \\ \hline
+\textbf{Page 141}, Exercise 6.19 & Line 4 in the solution runs over the margin. \\ \hline
+\textbf{Page 167}, Exercise 7.25 & In the first line of the solution to (c), replace ``latter'' by ``former''. \\ \hline
+\textbf{Page 198}, Exercise 7.78 & In the first display of the solution to (d), the second matrix should be preceded by $\boldsymbol{A}_{(4)} :=$. \\ \hline
+\textbf{Page 199}, Exercise 7.79 & In the second line from the bottom, Exercise 7.78 is employed (not 7.77 as written). \\ \hline
+\textbf{Page 206}, Exercise 7.91 & Line 2 in the exercise: delete comma after displayed matrix $\boldsymbol{A}$. \\ \hline
+\textbf{Page 215}, Exercise 8.10 & Line 1 in the solution runs over the margin. \\ \hline
+\textbf{Page 220}, Exercise 8.23 & \makecell[l]{The solution is not as tight as it should be. The correct solution reads as follows. \\
+								   				\textit{\textbf{Solution}} \\
+								   				Since $\boldsymbol{A}$ is positive definite, Exercise 8.22 implies that $\boldsymbol{A} = \boldsymbol{B} \boldsymbol{B}^\prime$ where $\boldsymbol{B}$ is square. Since $\boldsymbol{A}$ has full rank, so \\
+								   				has $\boldsymbol{B}$ (Exercise 4.13(d)). By the QR decomposition, (Exercise 7.35), we can write $\boldsymbol{B}^\prime = \boldsymbol{Q} \boldsymbol{L}^\prime$, where $\boldsymbol{Q}$ is \\
+								   				orthogonal and $\boldsymbol{L}$ is lower triangular with positive diagonal elements. Hence, $\boldsymbol{A} = \boldsymbol{B} \boldsymbol{B}^\prime =  \boldsymbol{L} \boldsymbol{Q}^\prime \boldsymbol{Q} \boldsymbol{L}^\prime = \boldsymbol{L} \boldsymbol{L}^\prime$.}\\ \hline
+\textbf{Page 239} Exercise 8.69 & \makecell[l]{The last two lines of the solution should be replaced by: \\
+											   Now premultiply both sides by $\boldsymbol{V}^{-1/2}$ and postmultiply both sides by $(\boldsymbol{X}^\prime \boldsymbol{X})^{-1}$. \\
+											   Upon transposing, we obtain the required equality. (Compare Exercise 12.29.)} \\ \hline
+\textbf{Page 245}, Chapter 9, Intro & Last line: ``theeigenvalues'' should be ``the eigenvalues''. \\ \hline
+\textbf{Page 253}, Exercise 9.11 & \makecell[l]{Line 1 should read: ``Let $\boldsymbol{C}$ and $\boldsymbol{D}$ be two real $n \times n$ matrices, \ldots ''. \\
+												The reason for restricting $\boldsymbol{C}$ and $\boldsymbol{D}$ to be real (which is only needed for part (a)) is that the logarithmic \\
+												function is multiple-valued, even in the case of a scalar complex variable. Taking logarithms on both sides of \\
+												an equation, the equality may not hold anymore if the principal value is taken on both sides.}\\ \hline
+\textbf{Page 322-323}, Exercise 12.1 & \makecell[l]{In the solution to b), second line: $(1 / \boldsymbol{b} \boldsymbol{b}^\prime)\boldsymbol{b} \boldsymbol{b}^\prime$ should read $(1 / \boldsymbol{b}^\prime \boldsymbol{b})\boldsymbol{b} \boldsymbol{b}^\prime$.\\
+													Also, in the solution to c), third line from the end: ``if and only'' should read ``if and only if''.}\\ \hline
+\textbf{Page 366}, Exercise 13.25 & Line 5 from bottom: At the end of the formula giving $\mathrm{D}\boldsymbol{F}(\boldsymbol{X})$, the differential $\mathrm{d}\vecv{\boldsymbol{X}}$ should be removed.\\ \hline
+\textbf{Page 373}, Exercise 13.38 & \makecell[l]{Last line: ``$\mathrm{d}\vecv{\boldsymbol{Y}} = \boldsymbol{D}^+ \mathrm{d}\vecv{\boldsymbol{Y}} = \ldots$'' should be: ``$\mathrm{d}\vech{\boldsymbol{Y}} = \boldsymbol{D}^+ \mathrm{d}\vech{\boldsymbol{Y}} = \ldots$''.} \\ \hline
+\textbf{Page 383}, Exercise 13.53 & Line 9: displayed formula should end with full stop (.). \\ \hline
+\textbf{Page 384}, Exercise 13.56 & \makecell[l]{Line 1: ``Then, since $\boldsymbol{R}^\prime \boldsymbol{\beta} = \boldsymbol{c}$, we find the solution for $\boldsymbol{\l}$ as'' should be: \\
+												 \hspace*{1.4cm}``Then, denoting the constrained solution by $(\widetilde{\boldsymbol{\beta}}, \widetilde{\boldsymbol{\l}})$, we have $\boldsymbol{R}^\prime \widetilde{\boldsymbol{\beta}} = \boldsymbol{c}$, and hence'' \\
+												 Line 4: $\boldsymbol{X} \Omega^{-1} \boldsymbol{X}$ should be $\boldsymbol{X}^\prime \Omega^{-1} \boldsymbol{X}$.} \\ \hline
+\textbf{Page 408}, Appendix A.3.4 & \makecell[l]{Line 17: the formula $f^{(n)}(c)(x-c)^n / n!$ should read $f^{(n)}(c)(x-b)^n / n!$.} \\ \hline
+\end{longtable}
+
+\end{document}
