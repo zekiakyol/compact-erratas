@@ -6,8 +6,8 @@
 
 ## Erratas
 
-:date: Errata Update <br> (Y/M/D) | :scroll: Errata
+:date: Errata Version <br> (Y/M/D) | :scroll: Errata
 :--: | :--:
-2025-11-11 | [Linear Algebra Done Right <br> - Sheldon Axler (4th Edition, 2024)](https://github.com/zekiakyol/compact-erratas/blob/main/LinearAlgebraDoneRight_LinearAxler_Errata.pdf)
+2026-03-28 | [Linear Algebra Done Right <br> - Sheldon Axler (4th Edition, 2024)](https://github.com/zekiakyol/compact-erratas/blob/main/LinearAlgebraDoneRight_SheldonAxler_Errata.pdf)
 2021-07-20 | [Elements of Large-Sample Theory <br> - Erich L. Lehmann (1999)](https://github.com/zekiakyol/compact-erratas/blob/main/ElementsOfLargeSampleTheory_ErichLehmann_Errata.pdf)
 2014-10-07 | [Matrix Algebra <br> - Karim M. Abadir, Jan R. Magnus (2005)](https://github.com/zekiakyol/compact-erratas/blob/main/MatrixAlgebra_KarimAbadirJanMagnus_Errata.pdf)
