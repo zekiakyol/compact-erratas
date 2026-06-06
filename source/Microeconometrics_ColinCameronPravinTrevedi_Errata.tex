@@ -1,0 +1,230 @@
+\documentclass[10pt, a4paper]{article}
+% Page Layout
+\usepackage[top=1cm, bottom=2cm, left=1cm, right=1cm]{geometry}
+\usepackage{setspace} % Adjust line spacing with \onehalfspacing, \doublespacing, \setstretch{1.25}
+% Language and Encoding
+\usepackage[utf8]{inputenc}
+% Fix for l3regex.syn error
+\usepackage{expl3}
+\expandafter\def\csname ver@l3regex.sty\endcsname{}
+% Hyperlinks and URLs
+\usepackage[hyphens]{url}
+\usepackage[colorlinks, breaklinks]{hyperref}
+\hypersetup{citecolor=blue, linkcolor=green, urlcolor=magenta, filecolor=cyan, pdfpagemode=UseNone} % Link colors and hide bookmarks
+% Citation Style
+\usepackage{apacite}
+% Math Packages
+\usepackage{amsmath, amssymb, amsfonts, amsthm, amsbsy, latexsym}
+\usepackage{mathtools} % $mathclap{}$
+\DeclareMathOperator*{\plim}{plim} % Custom operator
+% Graphics and Figures
+\usepackage{graphicx, caption, subcaption} % Include figures \includegraphics[scale=1]{figurename.png}
+\usepackage{stackengine, scalerel} % Alternative to \widehat: \stackon
+\usepackage{tikz, pgfplots} % TikZ and plotting
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes.misc, positioning, arrows.meta, fillbetween}
+% Tables
+\usepackage{booktabs, multirow, longtable, array, tabularx, ragged2e} % Enhanced tables
+\usepackage{diagbox, makecell} % Diagonal cells and customized table cells
+% Lists and Enumerations
+\usepackage{enumitem} % Customizable lists with labels: \begin{enumerate}[label=(\roman*)] \begin{enumerate}[label=\fbox{\Roman*}] \begin{enumerate}[label=(\alph*)]
+% Text Formatting
+\usepackage[dvipsnames]{xcolor} % Custom text colors \textcolor{red}{text} \definecolor{myblue}{RGB}{0, 0, 255}
+\usepackage{coloring}
+\usepackage{nicefrac} % Inline fractions: \nicefrac{1}{2}
+\usepackage{parskip} % Skip lines between paragraphs
+\usepackage{indentfirst} % Indent first paragraph after \section{}
+\usepackage{upref} % Non-italicized references
+\usepackage{cancel} % Strikeout in equations: \cancel{}
+% Miscellaneous
+\usepackage{verbatim} % Hide blocks: \begin{comment} ... \end{comment}
+\usepackage{lineno} % Number lines: \begin{linenumbers} ... \end{linenumbers}
+\usepackage[nodayofweek]{datetime} % Short date and time format: \today \currenttime
+\usepackage{listings} % Code listings
+\usepackage{float} % Control figure placement
+\pagenumbering{gobble} % No page numbers
+\usepackage[fixed]{fontawesome5}
+\usepackage{circledtext}
+\circledtextset{charf=\LARGE}
+% I usually forget
+	% Write above or below in math mode: $\overset{\mathrm{def}}{=}$ $\underset{\mathrm{def}}{=}$
+	% Set column width in tables: \begin{tabular}{|c|p{3cm}|} ... \end{tabular}
+	% Scale tables: \scalebox{0.8}{}
+	% Multiline expression underneath: $\sum_{\mathclap{\substack{i=0 \\ i \neq 5}}}^{10} a_i$. Use $\displaystyle\sum$ if necessary
+	% Avoid all inline math mode: \everymath{\displaystyle}
+% Custom commands
+\newcolumntype{R}[1]{>{\RaggedRight}p{#1}}
+\newcommand{\innerproduct}[2]{\left\langle #1, #2 \right\rangle}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\normalized}[1]{#1_\circ}
+\newcommand{\dg}[1]{\mathrm{dg}\left(#1\right)}
+\newcommand{\diag}[1]{\mathrm{diag}\left(#1\right)}
+\newcommand{\tr}[1]{\mathrm{tr}\left(#1\right)}
+\newcommand{\dimension}[1]{\mathrm{dim}\left(#1\right)}
+\newcommand{\col}[1]{\mathrm{col}\left(#1\right)}
+\newcommand{\kernel}[1]{\mathrm{ker}\left(#1\right)}
+\newcommand{\rk}[1]{\mathrm{rk}\left(#1\right)}
+\newcommand{\swp}[1]{\mathrm{SWP}\left(#1\right)}
+\newcommand{\etr}[1]{\mathrm{exp}\left(\tr{#1}\right)}
+\newcommand{\vecv}[1]{\mathrm{vec}\left(#1\right)}
+\newcommand{\vech}[1]{\mathrm{vech}\left(#1\right)}
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\newcommand{\green}[1]{\textcolor{green!50!black}{#1}}
+
+\begin{document}
+
+\section*{\faScroll Errata: Microeconometrics: Methods and Applications - A. Colin Cameron, Pravin K. Trivedi (2005)}
+
+\begin{longtable}{|R{.41\textwidth}|R{.56\textwidth}|} \hline
+	\multicolumn{2}{|l|}{Original document (7\textsuperscript{th} January, 2008): \href{https://cameron.econ.ucdavis.edu/mmabook/mmacorrections.html}{cameron.econ.ucdavis.edu/mmabook/mmacorrections.html}} \\
+	\multicolumn{2}{|l|}{This document (\today): \href{https://github.com/zekiakyol/compact-erratas}{github.com/zekiakyol/compact-erratas}} \\ \hline \hline
+	\multicolumn{2}{|l|}{If you have the 1st printing of the book, you should consider all entries.} \\
+	\multicolumn{2}{|l|}{If you have the 2nd reprinting of the book, you should consider only entries marked with \circledtext*{2}.} \\ \hline \hline
+	\textbf{\faMapMarker* Location} & \textbf{\faMarker Correction} \\ \hline
+	\textbf{Page xiii}, Table of Contents, Section 23.3 & Page number \red{762} should be \green{792}. \\ \hline
+	\textbf{Page 9}, Line 11 & \red{``If $d$ is found''} should be \green{``If $D$ is found''}. \\ \hline
+	\textbf{Page 56}, Equation (3.7), left-hand side \hfill \circledtext*{2} & \red{$y_{i1}^{1}$} should be \green{$y_{i1}^{0}$}. \\ \hline
+	
+	\textbf{Page 69}, Last line & \red{``$\ln{y}$''} should be \green{``$\ln w$''}. \\ \hline
+	\textbf{Page 73}, Line before Proposition 4.1 & Delete \red{``and uncorrelated''}. \\ \hline
+	\textbf{Page 85}, Last line & \red{``censored models''} should be \green{``censored models (see Section 16.9.2)''}. \\ \hline
+	\textbf{Page 89}, Line 3 from bottom & \red{``q = 0.1, 0.2, \ldots, 0.9 and the regression line''} should be \\ &\green{``q = 0.1, 0.5, and 0.9''}. \\ \hline
+	\textbf{Page 101}, Equation (4.52) & Ending term \red{$(Z'X)^{-1}$} should be \green{$(X'Z)^{-1}$}. \\ \hline
+	\textbf{Page 101}, Last line & \red{``see Section 6.5.6''} should be \green{``see Section 6.5.4''}. \\ \hline
+	\textbf{Page 103}, End of first paragraph & \red{``see Section 6.54.5''} should be \green{``see Section 6.5.4''}. \\ \hline
+	\textbf{Page 113}, Exercise 4-2, part (b) & \red{``Hence directly obtain the variance of $\overline{y}$''} should be \\&\green{``Hence directly obtain a consistent estimate of the variance of $\widehat{\mu}$''}. \\ \hline
+	\textbf{Page 114}, Exercise 4-4, parts (c)--(e) & Several typos; see replacement material. \\ \hline
+	\textbf{Page 114}, Exercise 4-7, parts (d)--(f) & These parts should be replaced; see replacement material. \\ \hline
+	\textbf{Page 164}, Exercise 5-1 & The exercise is correct, but the function is close to linear. A better example is \green{$E[y|x]=\exp(0+0.04x)/[1+\exp(0+0.04x)]$}. \\ \hline
+	\textbf{Page 165}, Exercise 5-7, part (c) & Delete \red{``NLS''}; this is an ML estimation. \\ \hline
+	\textbf{Page 168}, 2nd line after 1st displayed equation & \red{$E[h(x)(y-x'\beta)] = 0$} should be \green{$E[h(x)(y-g(x,\beta))] = 0$}. \\ \hline
+	\textbf{Page 173}, Line 6 & \red{$G_1$} should be \green{$G_0$} in Proposition 6.1. \\ \hline
+	\textbf{Page 178}, Last displayed equation & The first and third matrices are incorrect and should be analogous to \green{$\widehat G$} in (6.21). \\ \hline
+	\textbf{Page 181}, Equation (6.26) \hfill \circledtext*{2} & The OIR statistic should be multiplied by \green{$N$}. \\ \hline
+	\textbf{Page 185}, Equation (6.40) & The final \green{$N$} should not be boldface. \\ \hline
+	\textbf{Page 189}, Theil's interpretation \hfill \circledtext*{2} & Replace \red{``Suppose that in the reduced form model''} with \green{``Suppose that in a first-stage model''}. \\ \hline
+	\textbf{Page 189}, First line after (6.49) & \red{``PI is a $r \times K$ matrix''} should be \green{``$\Pi$ is a $K \times r$ matrix''}. \\ \hline
+	\textbf{Page 190}, Basmann's interpretation & Replace \red{``OLS reduced form prediction''} with \green{``OLS first-stage predictions''}. \\ \hline
+	\textbf{Page 193}, First line & \red{``because to regressors''} should be \green{``because the regressors''}. \\ \hline
+	\textbf{Page 194}, Line before (6.58) & Add \green{``defined by''} at the end of the line. \\ \hline
+	\textbf{Page 196}, Line 1 of nonlinear 2SLS section \hfill \circledtext*{2} & \green{$N^{-1}$} should not be boldface. \\ \hline
+	\textbf{Page 197}, Line 2 of last paragraph \hfill \circledtext*{2} & \red{``PI''} should be \green{``$\Pi$''} in both occurrences. \\ \hline
+	\textbf{Page 197}, Last displayed equation & The equation is correct, but readability improves if \green{$z_i$} in the last term is moved to the beginning of the summation. \\ \hline
+	\textbf{Page 198}, Line 9 from bottom & The \red{``$\neq$''} sign should be \green{``$=$''}. \\ \hline
+	\textbf{Page 198}, Line 8 from bottom & \red{``$=0$''} should be \green{``$\neq 0$''}. \\ \hline
+	\textbf{Page 199}, Table 6.4, NL2SLS column & \red{0.960, 0.046, 0.85} should be \green{0.969, 0.041, 0.84}. \\ \hline
+	\textbf{Page 199}, Line 3 from bottom & Delete \red{``that''} at the start of the line. \\ \hline
+	\textbf{Page 202}, Line 7  & \red{Section 16.2.5} should be \green{Section 10.2.5}. \\ \hline
+	\textbf{Page 206}, Middle reference & \red{(6.26)} should be \green{(6.76)}. \\ \hline
+	\textbf{Page 213}, Line 7 from bottom & \red{$G^2$} should be \green{$G(G-1)$} to allow for normalization restrictions on $B$. \\ \hline
+	\textbf{Page 214}, Line 13 & The superscript at the end of the line should be lowercase \green{$g$}. \\ \hline
+	\textbf{Page 214}, Displayed equation for 3SLS estimator & The matrix \red{$\Omega$} should be \green{$\widehat{\Omega}$}. The same correction applies two lines below and four lines down. \green{$\widehat{\Sigma}$} should also be defined before \green{$\widehat{\Omega}$}. \\ \hline
+	\textbf{Page 220}, Exercise 6-1, part (a) & \red{$y-\exp(x'\beta)$} should be \green{$(y-\exp(x'\beta))^2$}. \\ \hline
+	\textbf{Page 220}, Exercise 6-1, part (d) & Add \green{$E[(y-\exp(x'\beta))^3]=0$}. \\ \hline
+	\textbf{Page 237}, Line 4 & \red{Section 3.5} should be \green{Section 7.3.5}. \\ \hline
+	\textbf{Page 248}, Top definition of $W$ & Add a transpose after the first \green{$\widehat h$}. \\ \hline
+	\textbf{Page 248}, 3 lines above (7.46) & \red{Section 7.7.4} should be \green{Section 7.6.4}. \\ \hline
+	\textbf{Page 254}, Line 11 from bottom & Delete \red{``in generating $y$''}. \\ \hline
+	\textbf{Page 255}, Sections 7.8.1--7.8.3 & Sample size \red{$N=30$} should be \green{$N=40$}. \\ \hline
+	\textbf{Page 255}, Line 5 from bottom & \red{$z=(0.817-1)/0.376$} should evaluate to \green{$-0.487$}. \\ \hline
+	\textbf{Page 256}, Section 7.8.3 percentiles & \red{$-2.62$ and $1.83$} should be \green{$-1.89$ and $1.80$}. \\ \hline
+	\textbf{Page 273}, Line 6 and 7 from bottom \hfill \circledtext*{2} & The upper and lower bounds for $H$ should \red{not} be multiplied by \green{$N$}. \\ \hline
+	\textbf{Page 277}, OIR statistic in (8.39) \hfill \circledtext*{2} & The statistic should be divided by \green{$N$}. \\ \hline
+	\textbf{Page 296}, 3 lines from bottom & \red{within 0.21} should be \green{within 0.545}. \\ \hline
+	\textbf{Page 300}, 2nd paragraph of Section 9.3.4 & Replace the description based on generated data with \green{``using the log hourly wage data of Figure 9.1''}. \\ \hline
+	\textbf{Page 310}, Equation (9.20) & \red{$-b(x_0)$} should be \green{$+b(x_0)$}. \\ \hline
+	\textbf{Page 311}, first line & \red{``pedagogical reasons''} should be \green{``for pedagogical reasons''}. \\ \hline
+	\textbf{Page 335}, Exercise 9-4(a) & Delete \red{``density''} so the sentence reads \green{``Obtain the kernel regression estimate for \ldots''}. \\ \hline
+	\textbf{Page 341}, first line of Section 10.3 & \red{``For obtaining''} should be \green{``The leading method for maximizing''}. \\ \hline
+	\textbf{Page 343}, 3 lines after (10.7) & Replace \red{``which''} with \green{``where''}. \\ \hline
+	\textbf{Page 352}, Bibliographic Notes 5.3 & \red{10.3} should be \green{10.3}. \\ \hline
+	\textbf{Page 362}, 3rd paragraph & Change three occurrences of \red{$\sigma$} to \green{$\widehat{\sigma}$}. \\ \hline
+	\textbf{Page 364}, Equation (11.6) & Change the first minus sign to \green{$+$}, since \green{$t^*[\!1-\alpha/2]$} is usually negative. \\ \hline
+	\textbf{Page 370}, third line above (11.13) & \red{$i=-\sqrt{-1}$} should be \green{$i=\sqrt{-1}$}. \\ \hline
+	\textbf{Page 373}, Line 15 from bottom & \red{``Subsampling bootstraps are useful''} should be \green{``Subsampling is useful''}. \\ \hline
+	\textbf{Page 380}, 13 and 14 lines from bottom & Use \green{$(N_h-1)$} rather than \red{$(N_h-1))$}; only one set of parentheses is needed. \\ \hline
+	\textbf{Page 393}, Line 9 \hfill \circledtext*{2} & \red{$5^{20}$ or 95 trillion} should be \green{$20^5$ or 3 million}. \\ \hline
+	\textbf{Page 398}, second last line of Section 12.4 & Add an extra parenthesis after $\theta$ in two places. \\ \hline
+	\textbf{Page 410}, Line 1 & \red{``quasi-random sequences''} should be \green{``pseudo-random sequences''}. \\ \hline
+	\textbf{Page 414}, Figure 12.3 \hfill \circledtext*{2} & Vertical axis label should be \green{$f(x)$ and $kg(x)$}, and the legend should use \green{$kg(x)$} rather than \red{$g(x)$}. \\ \hline
+	\textbf{Page 414}, four lines down & Delete \red{``, x=r,''}. \\ \hline
+	\textbf{Page 453}, three lines from bottom & \red{100,000} should be \green{10,000}. \\ \hline
+	\textbf{Page 457}, Table 13.4 and following line & The evidence is against \green{$H_2$}, not against \red{$H_1$}. \\ \hline
+	\textbf{Page 469}, Line 2 \hfill \circledtext*{2} & \red{``Differentiating (14.4)''} should be \green{``Differentiating (14.5)''}. \\ \hline
+	\textbf{Page 474}, fourth last paragraph & Replace \red{``specified''} with \green{``classified''} in three places. \\ \hline
+	\textbf{Page 488}, Exercise 14-2, second line & Remove the \red{$x$} from the definition of \green{$\Lambda(z)$}. \\ \hline
+	\textbf{Page 493}, first two lines & Should read: \green{``in the probability of fishing from a beach, and an increase of 0.119, 0.080, and 0.068, respectively, in the probability of fishing from a pier, a private boat, and a charter boat.''} \\ \hline
+	\textbf{Page 495}, Last displayed equation's denominator\hfill\circledtext*{2} & Replace subscript \red{$l$} with subscript \green{$k$}, giving \green{$d_{ik}$} and \green{$I_{ik}$}. \\ \hline
+	\textbf{Page 501}, Equation (15.16) \hfill \circledtext*{2} & The right-hand side should contain bold \green{$\mathbf{0}$}. \\ \hline
+	\textbf{Page 501}, Equation (15.17) and 2 lines above & Add a minus sign before the expected Hessian. \\ \hline
+	\textbf{Page 515}, Lines 4-5 from bottom & \red{$c=2$ or $c=3$} should be \green{$C=2$ or $C=3$}. \\ \hline
+	\textbf{Page 524}, derivation of $d^2\ln L/dbb'$ & Add a minus sign in the last two equalities. \\ \hline
+	\textbf{Page 526}, third last equation & Delete the final closing parenthesis. \\ \hline
+	\textbf{Page 507}, Item 4 in bullet list \hfill \circledtext*{2} & The summation should use superscript \green{$s$} rather than superscript \red{$t$}. \\ \hline
+	\textbf{Page 508}, Equation (15.31) & Possible error; details need to be checked. \\ \hline
+	\textbf{Page 535}, last term in displayed equation \hfill \circledtext*{2} & \red{$(1-d_i)\ln[\sum_i \cdots]$} should be \green{$(1-d_i)\ln[1-\sum_i \cdots]$}. \\ \hline
+	\textbf{Page 540}, Figure 16.2 and last paragraph & Use the Mills ratio definition \green{$E[z|z>c]=\phi(c)/\Phi(c)$} to be consistent with the discussion on p.\,541. \\ \hline
+	\textbf{Page 541}, line after (16.23) & \red{``see Exercise 16-1''} should be \green{``see Section 16.10.1''}. \\ \hline
+	\textbf{Page 541}, Line 2 of (16.24) \hfill \circledtext*{2} & \red{$[w+\lambda(d_w)]^2$} should be \green{$w[+\lambda(d_w)]^2$}. \\ \hline
+	\textbf{Page 550}, second line of (16.39) & The last term should be \green{$E[y_2^*-k_y\,1^*>0]$}. \\ \hline
+	\textbf{Page 559}, Last line of displayed equation (a) & The final term should be \green{$\ln p_j$}, not \red{$\ln p_k$}. \\ \hline
+	\textbf{Page 560}, first displayed equation & The last term should be \green{$\ln \widehat p_j$}, not \red{$\ln \widehat p_k$}. \\ \hline
+	\textbf{Page 570}, Exercise 16-1, part (b) & \red{``all 2,000 observations''} should be \green{``all 200 observations''}. \\ \hline
+	\textbf{Page 597}, Line 1 & Add an extra closing parenthesis at the end of the expression. \\ \hline
+	\textbf{Page 598}, table heading & Change \red{Duration} to \green{Time}. \\ \hline
+	\textbf{Page 599}, table heading & Change \red{Duration} to \green{Time}. \\ \hline
+	\textbf{Page 605}, Line 5 & Replace \red{``... RRU and DRU''} with \green{``... RRU and DRU and 34 other regressors whose coefficients are not reported in Tables 17.7 and 17.8''}. \\ \hline
+	\textbf{Page 644}, 1st displayed equation after (19.6) & Use \green{$\Delta t_j$} in the numerator instead of \red{$\Delta t$}. \\ \hline
+	\textbf{Page 672}, Table 20.4 & LC should have mean 2.384 and sd 2.042; IDP mean 0.260 and sd 0.439; FMDE mean 4.030 and sd 3.471. \\ \hline
+	\textbf{Page 699}, Equation (21.2) & Add an error term \green{$u_i$} at the end of the right-hand side. \\ \hline
+	\textbf{Page 710} \hfill \circledtext*{2} & Additional correction listed in the errata; details continue beyond the provided image. \\ \hline
+	\textbf{Page 711}, Line 7 from bottom & \red{standard error = 0.09} should be \green{standard error = 0.009}. \\ \hline
+	\textbf{Page 725}, Table 21.7 \hfill \circledtext*{2} & \green{$\beta$} should not be boldface. \\ \hline
+	\textbf{Page 733}, 10 lines from bottom & Delete the term \red{$+\overline y$} from the within-group variation definition. \\ \hline
+	\textbf{Page 734}, Line 3 of second paragraph \hfill \circledtext*{2} & \green{$\beta$} should be boldface. \\ \hline
+	\textbf{Page 734}, Equation (21.45) \hfill \circledtext*{2} & \green{$\delta$} should be boldface. \\ \hline
+	\textbf{Page 735}, Formula (21.48) & This formula should only be used when there are no time-invariant regressors. If such regressors are present, an adjustment is needed, such as using pooled OLS rather than the within estimator. \\ \hline
+	\textbf{Page 736}, first displayed equation & Remove the transpose operator in all three places. \\ \hline
+	\textbf{Page 736}, Equation (21.52) & Remove the transpose operator in all three places, and replace \red{bold $W\_\text{bar}$} with \green{bold $e$ times bold $w_i$ bar transpose}. \\ \hline
+	\textbf{Page 745}, Equation (22.5) & Remove the transpose on \green{$W_N$}. \\ \hline
+	\textbf{Page 749}, Line 1 & \red{$Z_i$ is $\mathrm{Tr}\times T$} should be \green{$Z_i$ is $T\times \mathrm{Tr}$}. \\ \hline
+	\textbf{Page 760}, first displayed equation & The equation is valid in general, but the justification using Section 6.3.7 additionally requires \green{$E[X_i|Z_i]$} to be a linear combination of \green{$Z_i$}. \\ \hline
+	\textbf{Page 763}, Equation (22.32) & \red{$t=1,\ldots,T$} should be \green{$t=2,\ldots,T$}. \\ \hline
+	\textbf{Page 764}, Line 3 from bottom & Initial value \red{$y_{i0}$} should be \green{$y_{i1}$}. \\ \hline
+	\textbf{Page 765}, Equation (22.34) & \red{$t=2,\ldots,T$} should be \green{$t=3,\ldots,T$}. \\ \hline
+	\textbf{Page 766}, last paragraph of Section 22.5.3 & Assumes the initial value \green{$y_{i0}$} is observed, whereas elsewhere the section assumes \green{$y_{i1}$} is the initial value. \\ \hline
+	\textbf{Page 785}, Equation (23.19) & The conditioning variable and argument of \green{$g(\cdot)$} should be \green{$\alpha_i$}. \\ \hline
+	\textbf{Page 793}, Figure 23.1 & Axes labels are reversed. The vertical axis should be \green{$\log(\text{patents})$} and the horizontal axis \green{$\log(\text{R\&D})$}. \\ \hline
+	\textbf{Page 795}, Equation (23.35) & The left-hand side should also condition on \green{$\beta$}. \\ \hline
+	\textbf{Page 796}, Equations (23.37) and (23.38) & The left-hand side should condition on capital \green{$X_i$} rather than \red{$x_i$}. The ordering of conditioning variables is also inconsistent between pages 795 and 796. \\ \hline
+	\textbf{Page 796}, 2 lines above (23.37) & \red{Section 23.4.5} should be \green{Section 23.4.6}. \\ \hline
+	\textbf{Page 796}, second last paragraph & Begin with \green{``First, it is not meaningful to condition on''} rather than \red{``not possible''}. \\ \hline
+	\textbf{Page 797}, line above (23.40) & \red{Section 23.4.5} should be \green{Section 23.4.6}. \\ \hline
+	\textbf{Page 799}, Equation (23.43) & Drop the second equality and replace \red{$\Pr[y]$} with \green{$\Pr[y,\sum_t y_t=c]$} in the next equality. \\ \hline
+	\textbf{Page 799}, middle of page & Delete the lone \red{``+''} in the denominator. \\ \hline
+	\textbf{Page 803}, Equation (23.49) & Delete the last minus sign in the expression. \\ \hline
+	\textbf{Page 839}, 2nd equality for $\Sigma_C^{-1}$ & The final inverse should be removed. \\ \hline
+	\textbf{Page 839}, formula for $[I+aee']^{1/2}$ & The expression should end with \green{$ee'$} rather than \red{$Mee'$}. \\ \hline
+	\textbf{Page 843}, 5 lines from bottom & \red{(23.34)} should be \green{(23.46)}. \\ \hline
+	\textbf{Page 870}, Equation (25.34) & Change the last plus sign to a minus sign, and in the last term denominator replace \red{$1-\Phi(0)$} with \green{$\Phi(0)$}. \\ \hline
+	\textbf{Page 870}, Equation (25.35) & The last term should be \green{$(\sigma_{1e}-\sigma_{0e})$} rather than \red{$(\sigma_{0e}-\sigma_{1e})$}. \\ \hline
+	\textbf{Page 878}, 3 lines from bottom & \red{``the fixed effect phi\_ij''} should be \green{``the fixed effect alpha''}. \\ \hline
+	\textbf{Page 891}, Equation (25.77) \hfill \circledtext*{2} & The coefficient of \green{$D_i$} is just \green{$\gamma$}, not \red{$\gamma x \alpha$}. \\ \hline
+	\textbf{Page 895}, Table 25.6 footnote & Drop \red{RE74*RE75} from the list of regressors. \\ \hline
+	\textbf{Pages 895--896}, SEs in Tables 25.6 and 25.7 \hfill \circledtext*{2} & Bootstrap standard errors are invalid for matching estimators of ATET. Use the variance formulas of \green{Abadie and Imbens (2006)} instead. \\ \hline
+	\textbf{Page 904}, 2 lines after Equation (26.9) & \red{(26.8)} should be \green{(26.8)''}; essentially the same as (26.8). \\ \hline
+	\textbf{Page 933}, step 4 & The variance should be \green{$\sigma^2$ times the identity matrix}, not just \red{$\sigma^2$}. \\ \hline
+	\textbf{Page 937}, Table 27.4 header & \red{25\% missing} should be \green{10\% missing}. \\ \hline
+	\textbf{Page 946}, first line after Equation (A.3) & \red{``Amemiya (1985, p.89)''} should be \green{``Amemiya (1985, p.99)''}. \\ \hline
+	\textbf{Page 947}, Equation (A.6) & Add \green{$=1$} so that \green{$\Pr[\lim b_N=b]=1$}. \\ \hline
+	\textbf{Page 954}, 3 lines from end of Section A.6.4 & \green{$\sqrt{N}(X_{\text{bar},N}-\mu)$} converges in distribution to \green{$N[0,\sigma^2]$}. \\ \hline
+	\textbf{Page 966}, references & Add \green{Brown, B.W., and W.K. Newey (2002), ``Generalized Method of Moments, Efficient Bootstrapping, and Improved Inference,'' Journal of Business and Economic Statistics, 20, 507--517.} \\ \hline
+	\textbf{Page 970}, references & Add \green{Cragg, J.G. (1983), ``More Efficient Estimation in the Presence of Heteroscedasticity of Unknown Form,'' Econometrica, 51, 751--763.} \\ \hline
+	\textbf{Page 970}, references & Add \green{Davidson, R., and J.G. MacKinnon (2000), ``Bootstrap tests: How many bootstraps?'' Econometric Reviews, 19, 55--68.} \\ \hline
+	\textbf{Page 978}, references & Add \green{Heckman and Vytlacil (2002).} \\ \hline
+	\textbf{Page 993}, references & Add \green{Terence Smith, A.A. (1993), ``Estimating Nonlinear Time-Series Models Using Simulated Vector Autoregressions,'' Journal of Applied Econometrics, 8, S63--S84.} \\ \hline
+	\textbf{Page 999}, references & Add \green{p.341 to Dorsey, R.E. entry.} \\ \hline
+	\textbf{Page 1002}, references & Add \green{p.341 to Mayer, W.J. entry.} \\ \hline
+\end{longtable}
+
+\end{document}
