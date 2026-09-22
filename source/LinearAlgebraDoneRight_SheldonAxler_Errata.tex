@@ -1,6 +1,6 @@
 \documentclass[10pt, a4paper]{article}
 % Page Layout
-\usepackage[top=1cm, bottom=2cm, left=1cm, right=1cm]{geometry}
+\usepackage[top=0.8cm, bottom=0.75cm, left=1cm, right=1cm]{geometry}
 \usepackage{setspace} % Adjust line spacing with \onehalfspacing, \doublespacing, \setstretch{1.25}
 % Language and Encoding
 \usepackage[utf8]{inputenc}
@@ -74,8 +74,8 @@
 \section*{\faScroll Errata: Linear Algebra Done Right - Sheldon Axler (4th Edition, 2024)}
 
 \begin{longtable}{|R{.46\textwidth}|R{.50\textwidth}|} \hline
-	\multicolumn{2}{|l|}{Original document (27\textsuperscript{th} May, 2026): \href{https://linear.axler.net/LADRErrata4e.html}{linear.axler.net/LADRErrata4e.html}} \\
-	\multicolumn{2}{|l|}{This document (\today): \href{https://github.com/zekiakyol/compact-erratas}{github.com/zekiakyol/compact-erratas}} \\ \hline \hline
+	\multicolumn{2}{|l|}{Original errata (27\textsuperscript{th} May, 2026): \href{https://linear.axler.net/LADRErrata4e.html}{linear.axler.net/LADRErrata4e.html}} \\
+	\multicolumn{2}{|l|}{This errata (\today): \href{https://github.com/zekiakyol/compact-erratas}{github.com/zekiakyol/compact-erratas}} \\ \hline \hline
 	\textbf{\faMapMarker* Location} & \textbf{\faMarker Correction} \\ \hline
 	\textbf{Page xii}, Line 2 of third paragraph & \red{``infomal''} should be \green{``informal''}. \\ \hline
 	\textbf{Page 28}, Line 8 from bottom & \red{$\mathbf{F}$} should be \green{$\mathbf{R}$}. \\ \hline
@@ -92,7 +92,7 @@
 	\textbf{Page 166}, Line 1 & \red{``a''} should be \green{``a nonzero''}. \\ \hline
 	\textbf{Page 169}, Third sentence in last paragraph & \red{``Every vector''} should be \green{``Every nonzero vector''}. \\ \hline
 	\textbf{Page 175}, Last paragraph including the italicized note & \red{``pairs''} should be \green{``ordered pairs''}, four times total. \\ \hline
-	\textbf{Pages 175 and 177}, Examples 5.72 and 5.79 & These examples have been rewritten to be in the context of complex vector spaces, to be consistent with 5.78. \\ \hline
+	\textbf{Pages 175 and 177}, Examples 5.72 and 5.79 & These examples have been \href{https://linear.axler.net/LADR4e.pdf#page=189}{\faLink rewritten} to be in the context of complex vector spaces, to be consistent with 5.78. \\ \hline
 	\textbf{Page 179}, Line 8 above Exercises & \red{``5B''} should be \green{``5C''}. \\ \hline
 	\textbf{Page 216}, Second line above 6.58 & \red{``be''} should be \green{``by''}. \\ \hline
 	\textbf{Page 229}, Paragraph above 7.4 & Interchange \red{$V$} and \red{$W$} throughout (i.e.\ replace each \red{$V$} with \green{$W$} and each \red{$W$} with \green{$V$}). \\ \hline
@@ -100,11 +100,12 @@
 	\textbf{Page 244}, Line 3 of proof of 7.27 & \red{``see 6.69''} should be \green{``see 4.13''}. \\ \hline
 	\textbf{Page 259}, Line 3 from end of proof of 7.49 & \red{$\mathbf{F}^n$} should be \green{$\mathbf{F}^m$}. \\ \hline
 	\textbf{Page 267}, Line 14 from bottom & \red{``left''} should be \green{``right''}. \\ \hline
-	\textbf{Page 268}, Exercise 2 & Add \green{``$T \neq 0$.''} \\ \hline
+	\textbf{Page 268}, Exercise 2 & Add \green{$T \neq 0$}. \\ \hline
 	\textbf{Page 272}, Line 11 & \red{``7.64(c)''} should be \green{``7.64(d)''}. \\ \hline
 	\textbf{Page 276}, Lines 2 and 3 from bottom & \red{``orthogonal''} should be \green{``orthonormal''}. \\ \hline
 	\textbf{Page 292}, Line 4 above 7.110 & Final \red{$\Omega_1$} should be \green{$\Omega_2$}. \\ \hline
 	\textbf{Page 307}, Exercise 12 & \red{``every vector''} should be \green{``every nonzero vector''}. \\ \hline
+	\textbf{Page 307}, Exercise 23 & Replace the comment with \green{\textit{``This exercise shows that (b) in 8.17 does not hold without the hypothesis that $\mathbf{F}=\mathbf{C}$''}}. \\ \hline
 	\textbf{Page 316}, Line 2 of Exercise 10 & \red{``basis of $T$''} should be \green{``basis of $V$''}. \\ \hline
 	\textbf{Page 320}, Line 2 of proof of 8.41 & \red{``8.22(c)''} should be \green{``8.22(b)''}. \\ \hline
 	\textbf{Page 321}, Line 3 of Example 8.43 & \red{``contraast''} should be \green{``contrast''}. \\ \hline
@@ -112,7 +113,7 @@
 	\textbf{Page 336}, Line 3 from bottom of proof of 9.7 & Insert an open parenthesis before ``$f_1$''. \\ \hline
 	\textbf{Page 339}, Lines 6--8 of proof of 9.13 & \red{$C^{-1} T C$} should be \green{$C^{-1} B C$} (three times). \\ \hline
 	\textbf{Page 339}, Line 8 of proof of 9.13 & \red{$C^t T C$} should be \green{$C^t B C$}. \\ \hline
-	\textbf{Page 341}, Lines 2 and 4 from bottom & \red{$\sum_{j=1}^k$} should be \green{$\sum_{j=1}^n$}. \\ \hline
+	\textbf{Page 341}, Lines 2 and 4 from bottom & \red{$\displaystyle\sum_{j=1}^k$} should be \green{$\displaystyle\sum_{j=1}^n$}. \\ \hline
 	\textbf{Page 350}, Line 1 of proof of 9.36 & \red{``$n$-linear form $\alpha$ on $V$''} should be \green{``$n$-linear form on $V$''}. \\ \hline
 	\textbf{Page 351}, Line 6 from bottom & \red{``either''} should be \green{``each''}. \\ \hline
 	\textbf{Page 360}, Parts (d) and (e) of 9.57 & \red{``to added''} should be \green{``is added''}. \\ \hline
@@ -127,7 +128,7 @@
 	\textbf{Page 375}, Line 1 of part (b) & \red{``There there''} should be \green{``Then there''}. \\ \hline
 	\textbf{Page 377}, Line 4 of proof of 9.83 & Interchange \red{$N$} and \red{$M$} (three times), i.e.\ replace each \red{$N$} with \green{$M$} and each \red{$M$} with \green{$N$}. \\ \hline
 	\textbf{Page 380}, Line 1 of part (b) & \red{``There there''} should be \green{``Then there''}. \\ \hline
-	\textbf{Page 385}, Top of first column & The index entry for ``Bessel's inequality'' should be moved to follow the index entry for ``Bernstein polynomials''. \\ \hline
+	\textbf{Page 385}, Top of first column & The index entry for \red{``Bessel's inequality''} should be moved to follow the index entry for \green{``Bernstein polynomials''}. \\ \hline
 \end{longtable}
 
 \end{document}
