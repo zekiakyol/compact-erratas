@@ -1,6 +1,6 @@
 \documentclass[10pt, a4paper]{article}
 % Page Layout
-\usepackage[top=0.8cm, bottom=0.75cm, left=1cm, right=1cm]{geometry}
+\usepackage[top=0.8cm, bottom=0.75cm, left=0.75cm, right=0.75cm]{geometry}
 \usepackage{setspace} % Adjust line spacing with \onehalfspacing, \doublespacing, \setstretch{1.25}
 % Language and Encoding
 \usepackage[utf8]{inputenc}
@@ -44,6 +44,8 @@
 \usepackage{float} % Control figure placement
 \pagenumbering{gobble} % No page numbers
 \usepackage[fixed]{fontawesome5}
+\input pdfmsym
+\pdfmsymsetscalefactor{12}
 % I usually forget
 	% Write above or below in math mode: $\overset{\mathrm{def}}{=}$ $\underset{\mathrm{def}}{=}$
 	% Set column width in tables: \begin{tabular}{|c|p{3cm}|} ... \end{tabular}
@@ -73,7 +75,7 @@
 
 \section*{\faScroll Errata: Bayesian Econometrics - Gary Koop (2003)}
 
-\begin{longtable}{|R{.36\textwidth}|R{.58\textwidth}|} \hline
+\begin{longtable}{|R{.38\textwidth}|R{.58\textwidth}|} \hline
 	\multicolumn{2}{|l|}{Original errata (1\textsuperscript{st} January, 2009): \href{https://epdc.wiley.com/pub/docs/3243ba3d-b457-40a0-ae6b-63d7ae78a1b7}{epdc.wiley.com/pub/docs/3243ba3d-b457-40a0-ae6b-63d7ae78a1b7}} \\
 	\multicolumn{2}{|l|}{This errata (\today): \href{https://github.com/zekiakyol/compact-erratas}{github.com/zekiakyol/compact-erratas}} \\ \hline \hline
 	\textbf{\faMapMarker* Location} & \textbf{\faMarker Correction} \\ \hline 
@@ -85,7 +87,7 @@
 	\textbf{Page 36}, Equation (3.7) & The \red{$h^{\frac{1}{2}}$} term in the likelihood function should be \green{$h^{\frac{k}{2}}$}. \\ \hline	
 	\textbf{Page 37}, Equation (3.19) & \red{$\displaystyle var(h\mid y)=\frac{2\overline{s}^{-2}}{\overline{\nu}}$} should be \green{$\displaystyle var(h\mid y)=\frac{2\overline{s}^{-4}}{\overline{\nu}}$}.  \\ \hline	
 	\textbf{Page 38}, Equation (3.24) & \red{$\displaystyle p(\beta,h)\propto \dfrac{1}{h}$} should be \green{$\displaystyle p(\beta,h)\propto h^{\dfrac{k-2}{2}}$}. \\ \hline
-	\textbf{Page 42}, Equation (3.37) & \red{$\displaystyle PO_{12}=\frac{(|X_1'X_1|)^{-\frac{1}{2}}(\nu_1s_1^2)^{-\frac{N}{2}}p(M_1)}{(|X_2'X_2|)^{-\frac{1}{2}}(\nu_2s_2^2)^{-\frac{\overline{N}}{2}}p(M_2)}$} should be  \\ 	
+	\textbf{Page 42}, Equation (3.37) & \red{$\displaystyle PO_{12}=\frac{(|X_1'X_1|)^{\frac{1}{2}}(\nu_1s_1^2)^{-\frac{N}{2}}p(M_1)}{(|X_2'X_2|)^{\frac{1}{2}}(\nu_2s_2^2)^{-\frac{\overline{N}}{2}}p(M_2)}$} should be  \\ 	
 	& \green{$\displaystyle PO_{12}=\frac{(|X_1'X_1|)^{-\frac{1}{2}}(\nu_1s_1^2)^{-\frac{N}{2}}p(M_1)}{(|X_2'X_2|)^{-\frac{1}{2}}(\nu_2s_2^2)^{-\frac{N}{2}}p(M_2)}$}. \\ \hline
 	\textbf{Page 45}, First line after Equation (3.38) & For notation consistency, \red{$N(0,h^{-1}I_T)$} should be \green{$N(0_T,h^{-1}I_T)$}. \\ \hline	
 	\textbf{Page 45}, Equation (3.39) & \red{$S$} should be \green{$T$}. \\ \hline	
@@ -99,30 +101,37 @@
 	\textbf{Page 84}, Line 4 from top & \red{``weights are then calculated as (4.36)''}  should be \\
 	& \green{``weights are then calculated as specified in (4.38).''} \\ \hline	
 	\textbf{Page 84}, Line 8 from top &  \red{``as in (4.35), we can $\ldots$''} should  be \green{``as in (4.37), we can $\ldots$''}. \\ \hline	
-	\textbf{Page 103}, Line 18 from top & Delete the expectation symbols. The corrected text is \green{``we are setting $g(y)=Skew(y)$ or $Kurt(y)$ and $g(y^\dagger)=Skew(y^\dagger)$ or $Kurt(y^\dagger)$.''} \\ \hline	
+	\textbf{Page 103}, Line 18 from top & \red{``$g(y)=E[Skew(y)]$ or $E[Kurt(y)]$ and $g(y^\dagger)=E[Skew(y^\dagger)]$ or $E[Kurt(y^\dagger)]$.''}  shoud be \\
+	& \green{``$g(y)=Skew(y)$ or $Kurt(y)$ and $g(y^\dagger)=Skew(y^\dagger)$ or $Kurt(y^\dagger)$.''} \\ \hline	
 	\textbf{Page 103}, Posterior predictive $p$-value discussion & The description is correct as written but may be misleading: the stated procedure calculates the probability of values more extreme than the observed test statistic in one tail only of its posterior distribution. Under the definition used here, the posterior predictive $p$-value lies between $0$ and $0.5$. A more conventional $p$-value can be obtained by doubling it, which should work well when the distribution is approximately symmetric. \\ \hline	
 	\textbf{Page 106}, Equation (5.22) & \red{$\displaystyle f(\theta)=\frac{1}{p(2\pi)^{\frac{k}{2}}}|\widehat{\Sigma}|^{-\frac{1}{2}}\exp\left[-\frac{1}{2}(\widehat{\theta}-\theta)'\widehat{\Sigma}^{-1}(\widehat{\theta}-\theta)\right]1(\theta\in\widehat{\Theta})$} should be \\ 
 	& \green{$\displaystyle f(\theta)=\frac{1}{(1-p)(2\pi)^{\frac{k}{2}}}|\widehat{\Sigma}|^{-\frac{1}{2}}\exp\left[-\frac{1}{2}(\widehat{\theta}-\theta)'\widehat{\Sigma}^{-1}(\widehat{\theta}-\theta)\right]1(\theta\in\widehat{\Theta})$}. \\ \hline	
-	\textbf{Page 107}, Line 3 & Replace with \green{``for the noninformative prior given in (5.4), and$\ldots$''}. \\ \hline	
+	\textbf{Page 107}, Line 3 &  \red{``for the noninformative prior given in (5.2), and$\ldots$''}.  should be \\
+	& \green{``for the noninformative prior given in (5.4), and$\ldots$''}. \\ \hline
 	\textbf{Page 107}, Paragraph 2, Line 4 from bottom & The reference should be to \green{(5.6)}. \\ \hline	
-	\textbf{Page 120}, Equation (6.8) & Insert the missing factor \green{$|\Omega|^{-1/2}$}, and replace \red{$h^{1/2}$} with \green{$h^{k/2}$}. \\ \hline	
+	\textbf{Page 120}, Equation (6.8) & Insert the missing factor \green{$|\Omega|^{-1/2}$}. \\
+	& \red{$h^{1/2}$} should be \green{$h^{k/2}$}. \\ \hline	
 	\textbf{Page 129}, Description of Student-$t$ errors & The statement \red{``$\ldots$ linear regression model with independent Student-$t$ errors''} formally holds for fixed $\nu_\lambda$. When $\nu_\lambda$ is treated as an unknown parameter and assigned a hierarchical prior, the resulting distribution is a mixture of Student-$t$ distributions. \\ \hline	
 	\textbf{Page 153}, Second equation from bottom &  \red{$\displaystyle \overline{\beta}=\overline{V} \left(\underline{V}_{\beta}^{-1}\underline{\beta}+h\sum_{i=1}^{N}\widetilde{X}_i'[y_i-\alpha_i\iota_T]\right)$} should be \\
 	& \green{$\displaystyle \overline{\beta}=\overline{V}_{\beta}\left(\underline{V}_{\beta}^{-1}\underline{\beta}+h\sum_{i=1}^{N}\widetilde{X}_i'[y_i-\alpha_i\iota_T]\right)$}. \\ \hline	
-	\textbf{Page 160}, Equation (7.36) & Replace with \green{$\displaystyle \widehat{p}(\theta_2^*\mid y,\theta_1^*)=\frac{1}{S^*}\sum_{s^*=1}^{S^*}p\!\left(\theta_2^*\mid y,z^{(s^*)},\theta_1^*\right)$}. \\ \hline
-	\textbf{Page 183}, Third line from bottom & Use \green{$E(\alpha_t\mid\alpha_{t-1})=\alpha_{t-1}$}. \\ \hline	
+	\textbf{Page 160}, Equation (7.36) &  \red{$\displaystyle \varwidehat{p(\theta_2^* \mid y,\theta_1^*)} = \dfrac{1}{S^*}\sum_{s^*=1}^{S^*} p\left(\theta_2^* \mid y,z^{(s^*)},\theta_1^{(s^*)}\right)$} should be \\
+	& \green{$\displaystyle \varwidehat{p(\theta_2^*\mid y,\theta_1^*)}=\frac{1}{S^*}\sum_{s^*=1}^{S^*}p\!\left(\theta_2^*\mid y,z^{(s^*)},\theta_1^*\right)$}. \\ \hline
+	\textbf{Page 183}, Third line from bottom & \red{$E(\alpha_t\mid\alpha_{t-1})=0$} should be \green{$E(\alpha_t\mid\alpha_{t-1})=\alpha_{t-1}$}. \\ \hline	
 	\textbf{Page 184}, Line 5 & \red{$u_t$} should be \green{$\varepsilon_t$}. \\ \hline	
 	\textbf{Page 190}, 15 lines from bottom & The reference to \red{(8.10)} should be \green{(8.19)}. \\ \hline	
-	\textbf{Page 198}, Equation (8.42) & Replace with \green{$\displaystyle K_t=(T_tP_tZ_t'+J_tG_t')D_t^{-1}$}. \\ \hline	
-	\textbf{Page 199}, Equation (8.44) & Replace with \green{$\displaystyle P_{t+1}=T_tP_t(T_t-K_tZ_t)'+J_t(J_t-K_tG_t)'$}. \\ \hline	
-	\textbf{Page 199}, Equation (8.47) & Replace with \green{$\displaystyle V_t=F_t\left(G_t'D_t^{-1}Z_t+[J_t-K_tG_t]'U_t[T_t-K_tZ_t]\right)$}. \\ \hline	
+	\textbf{Page 198}, Equation (8.42) &  \red{$\displaystyle K_t=(T_tP_tZ_t'+J_tG_t')D_t'$} should be \\
+	& \green{$\displaystyle K_t=(T_tP_tZ_t'+J_tG_t')D_t^{-1}$}. \\ \hline	
+	\textbf{Page 199}, Equation (8.44) & \red{$\displaystyle P_{t+1}=T_tP_t(T_t-K_tZ_t)'+J_t(J_t-K_tG_t)$} should be \\
+	& \green{$\displaystyle P_{t+1}=T_tP_t(T_t-K_tZ_t)'+J_t(J_t-K_tG_t)'$}. \\ \hline	
+	\textbf{Page 199}, Equation (8.47) & \red{$\displaystyle V_t=F_t\left(G_t'D_t^{-1}Z_t+[J_t-K_tG_t]'U_t[T_t-K_tZ_t]'\right)$} should be \\
+	& \green{$\displaystyle V_t=F_t\left(G_t'D_t^{-1}Z_t+[J_t-K_tG_t]'U_t[T_t-K_tZ_t]\right)$}. \\ \hline	
 	\textbf{Page 202}, Empirical example & A small error in the MATLAB code used for this empirical example makes \red{Table 8.1 and Figure 8.3} incorrect; see the computer-code errata below. \\ \hline	
 	\textbf{Page 242}, Equation for $p(\eta\mid y)$ at bottom & The equation is incorrect. Use the general form given in \green{(8.21) on page 189}. \\ \hline	
 	\textbf{Page 268}, 9 lines from bottom & \red{$(y_1,\ldots,y_T)'$} should be \green{$(y_1,\ldots,y_N)'$}. \\ \hline	
 	\textbf{Page 271}, Below Equation (11.9) & The degrees of freedom should be \green{$N-1$}, not \red{$N$}. \\ \hline	
 	\textbf{Page 271}, Equation (11.12) & The \red{$\iota_T$'s} should be \green{$\iota_N$'s}. \\ \hline	
-	\textbf{Page 271}, Between Equations (11.11) and (11.12) & Replace the formula for $P_{X_r}$ with
-	\green{$\displaystyle P_{X_r}=M_1-X_r(X_r'X_r)^{-1}X_r'$}, where \green{$\displaystyle M_1=I_N-\frac{\iota_N\iota_N'}{N}$}. \\ \hline	
+	\textbf{Page 271}, Equation Between (11.11) and (11.12) & \red{$\displaystyle P_{X_r}=I_N-X_r(X_r'X_r)^{-1}X_r'$} should be \\
+	& \green{$\displaystyle P_{X_r}=M_1-X_r(X_r'X_r)^{-1}X_r'$, \text{ where } $\displaystyle M_1=I_N-\frac{\iota_N\iota_N'}{N}$}. \\ \hline	
 	\textbf{Page 290}, Information matrix & The information matrix is based on the \green{log likelihood}, not the likelihood itself. Two equations on this page should therefore contain log likelihoods instead of likelihoods. \\ \hline	
 	\textbf{Page 320}, Theorem B.2 & Replace the theorem with: \green{Let $X$ and $Y$ be two random variables, $g(\cdot)$ and $h(\cdot)$ be two functions, and $a$ and $b$ be constants. Then $E[ag(X)+bh(Y)]=aE[g(X)]+bE[h(Y)]$, and $var[ag(X)+bh(Y)]=a^2 var[g(X)]+b^2 var[h(Y)]$ if $X$ and $Y$ are independent.} \\ \hline	
 	\textbf{Page 322}, Definitions B.13 and B.14 & Definitions B.13 and B.14 repeat the definitions on page 321. \\ \hline	
